@@ -1,0 +1,92 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,scrextend}
+\usepackage{fancyhdr}
+\usepackage{mathtools}
+\pagestyle{fancy}
+
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\qed}{\hfill$\blacksquare$}
+\let\newproof\proof
+\renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{newproof}\end{addmargin}\qed}
+% \newcommand{\expl}[1]{\text{\hfill[#1]}$}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\mathtoolsset{showonlyrefs} 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\chead{Steven Jang}
+\rhead{\today}
+ 
+% \maketitle
+
+\begin{problem}{889}
+If $h_n = \sum_{k=1}^n\frac{(-1)^{k+1}}{k}$, then identify:
+\begin{equation}\label{*}
+\lim_{n\to\infty}({log(2)-h_n})n
+\end{equation} 
+\begin{equation}\label{eq:**}
+\lim_{n\to\infty}({h_n h_{n+1}-log^2(n)})
+\end{equation} 
+\end{problem}
+ 
+\begin{proof}{We are going to show that equation \eqref{*} is equal to ${\frac{1}{4}}$.}
+\\
+\text{ }
+\\
+We know that the Taylor series of $log(2)=\sum_{k=1}^{\infty}\frac{(-1)^{k+1}}{k}$. Thus, 
+
+\begin{gather}
+log(2)-h_n = \frac{1}{2n+1} - \frac{1}{2n+2} + \frac{1}{2n+3} - ... \\
+(log(2)-h_n)n = \frac{n}{2n+1} - \frac{n}{2n+2} + \frac{n}{2n+3} - ... \\
+(log(2)-h_n)n = \frac{1}{2+\frac{1}{n}} - \frac{1}{2+\frac{2}{n}} + \frac{1}{2+\frac{3}{n}} - ... \\
+(log(2)-h_n)n = \frac{1}{2+\frac{1}{n}} - \frac{1}{2+\frac{2}{n}} + \frac{1}{2+\frac{3}{n}} - ... \\
+(log(2)-h_n)n = \frac{\frac{1}{n}}{(2+\frac{1}{n})(2+\frac{2}{n})} - \frac{\frac{1}{n}}{(2+\frac{3}{n})(2+\frac{4}{n})} + ... \\
+(log(2)-h_n)n = \frac{1}{n}\sum_{i=0}^{\infty}{\frac{1}{(2+\frac{2i+1}{n})(2+\frac{2i+2}{n})}}
+\label{***}
+\end{gather}
+
+
+We can find two sums that are less than or equal to and greater than or equal to equation \eqref{***}
+\begin{gather}
+\frac{1}{n}\sum_{i=0}^{\infty}{\frac{1}{(2+\frac{2i+2}{n})^2}} \leq \frac{1}{n}\sum_{i=0}^{\infty}{\frac{1}{(2+\frac{2i+1}{n})(2+\frac{2i+2}{n})}} \leq \frac{1}{n}\sum_{i=0}^{\infty}{\frac{1}{(2+\frac{2i}{n})^2}}\label{****}
+\end{gather}
+
+By using the Riemann sums of the rightmost and leftmost sums in inequality \eqref{****}, we can attain the improper integral,
+
+\begin{equation}\label{*****}
+\lim_{t\to\infty}\int_0^t\frac{1}{(2+2x)^2}dx 
+\end{equation}
+
+By the Squeeze Theorem, we can say that the integral is equal to all sums in the inequality \eqref{*****}. By solving the improper integral, we get that the answer is $\frac{1}{4}$
+
+\end{proof}
+\end{document}

@@ -1,0 +1,93 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,scrextend}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\qed}{\hfill$\blacksquare$}
+\let\newproof\proof
+\renewenvironment{proof}{\begin{addmargin}[1em]{0em}\begin{newproof}}{\end{newproof}\end{addmargin}\qed}
+% \newcommand{\expl}[1]{\text{\hfill[#1]}$}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{reflection}[2][Reflection]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\chead{Steven Jang}
+\rhead{\today}
+ 
+% \maketitle
+
+\begin{problem}{882}
+Find all functions $f: \R\xrightarrow{}\R  $ where $f(x^4+y) = f(x) + f(y^4)$ for all $x,y \in \R$
+\end{problem}
+
+ 
+\begin{proof}{We are going to show that the only function with the given property is the (constant) zero function.}\\
+\\
+Consider $x = y = 0$ \\
+$f(0 + 0) = f(0) + f(0)$ \\
+$f(0) = 2f(0)$ \\
+$f(0) = 0$ \\
+\\
+Now consider $y = 0$ and $x \in \R$ \\
+$f(x^4 + 0)=f(x)+f(0)$ 
+
+\begin{equation} \label{eq:*}
+f(x^4)=f(x), \forall x \in \R
+\end{equation}
+%$f(x^4)=f(x), \forall x \in \R$ \label{eq:*}
+
+Let $a \in \R$. Then $f(-a) = f((-a)^4) = f(a^4) = f(a)$, which means that the function is even.\\
+\\
+Substituting equation \ref{eq:*} to the original equation, we get 
+\begin{equation} \label{eq:**}
+f(x^4+y) = f(x^4)+f(y),  \forall x,y \in \R
+\end{equation}
+%$f(x^4+y) = f(x^4)+f(y),  \forall x,y \in \R$ (**) \\
+\\
+Let $z \in \R^+$. Then there exists $x \in \R$ such that $z=x^4$. Replacing $x^4$ with $z$ in equation \ref{eq:**}, we obtain 
+\begin{equation} \label{eq:***}
+f(z+y)=f(z)+f(y), \forall y \in \R, \forall z \in \R^+
+\end{equation}
+%$f(z+y)=f(z)+f(y), \forall y \in \R, \forall z \in \R^+$. (***) \\
+\\
+If $b \in \R - \{0\}$, either $b$ or $-b$ is positive. Substituting $b$ and $-b$ in equation \ref{eq:***}, we have $f(0) = f(-b) + f(b)$. Since $f(0) = 0$, $f(-b) = -f(b), \forall b \in \R$, which means the function is odd.
+\\
+The only function that is both even and odd is $f=0$.
+\end{proof}
+
+% --------------------------------------------------------------
+%     You don't have to mess with anything below this line.
+% --------------------------------------------------------------
+ 
+\end{document}
